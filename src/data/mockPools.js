@@ -235,12 +235,13 @@ export const roles = [
   "Capital Markets",
 ];
 
-export const globalStates = [
-  "All States",
-  "Ingested",
-  "Reconstructed",
-  "Scored",
-  "ProofAnchored",
-  "DiligenceOpen",
-  "TokenEligible",
+/** Machine `value` stays stable for filters; `label` uses desk-friendly wording in the UI. */
+export const globalStateOptions = [
+  { value: "All States", label: "All states" },
+  { value: "Ingested", label: "Ingested" },
+  { value: "Reconstructed", label: "File built (tape + collateral linked)" },
+  { value: "Scored", label: "Scored (defects tagged)" },
+  { value: "ProofAnchored", label: "Proof anchored (Walacor)" },
+  { value: "DiligenceOpen", label: "Diligence open" },
+  { value: "TokenEligible", label: "Token / distribution eligible" },
 ];

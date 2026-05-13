@@ -5,7 +5,7 @@ import ActionDeck from "../components/ActionDeck";
 import AppHeader from "../components/AppHeader";
 import {
   buildLensOptions,
-  globalStates,
+  globalStateOptions,
   lensCalloutText,
   lensToHighlightCoarse,
   LENS_ALL,
@@ -17,7 +17,7 @@ const INTAKE_ACTIONS = [
   {
     id: "accept",
     title: "Accept ingestion batch",
-    effect: "Marks selected pool batch as accepted for downstream reconstruction queue.",
+    effect: "Marks the selected pool as accepted and queues it for the next desk (tape + collateral file build).",
     rule: "A pool row must be selected (radio).",
     requiresPool: true,
   },
@@ -30,8 +30,8 @@ const INTAKE_ACTIONS = [
   },
   {
     id: "route",
-    title: "Route to reconstruction",
-    effect: "Hands off canonical intake package to Screen 2 (Loan Reconstruction Workspace) when ready.",
+    title: "Route to file-build desk",
+    effect: "Hands off the sealed intake package to the team that ties tape fields to collateral documents (next workflow step).",
     rule: "A pool row must be selected; integrity should be Hash Confirmed (soft check in mock).",
     requiresPool: true,
   },
@@ -46,7 +46,7 @@ function intakeStatesFilter(globalState, rows) {
 
 export default function IntakeControlTower() {
   const [role, setRole] = useState(roles[0]);
-  const [globalState, setGlobalState] = useState(globalStates[0]);
+  const [globalState, setGlobalState] = useState(globalStateOptions[0].value);
   const [sourceType, setSourceType] = useState("All");
   const [schemaProfile, setSchemaProfile] = useState("All");
   const [status, setStatus] = useState("All");
@@ -135,11 +135,13 @@ export default function IntakeControlTower() {
   return (
     <div className="page-content">
       <AppHeader
+        title="Intake Control Tower"
+        subtitle="Step 01 — pool ingestion, schema checks, first-pass integrity (Walacor-ready)."
         role={role}
         roles={roles}
         onRoleChange={setRole}
         globalState={globalState}
-        globalStates={globalStates}
+        globalStateOptions={globalStateOptions}
         onGlobalStateChange={setGlobalState}
       />
 
