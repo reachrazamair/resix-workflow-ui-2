@@ -233,7 +233,11 @@ export const roles = [
   "Risk Reviewer",
   "Compliance Reviewer",
   "Capital Markets",
+  "Desk Admin",
 ];
+
+/** App-shell persona for nav visibility (routing desk). */
+export const deskPersonas = ["Capital Markets", "Desk Admin"];
 
 /** Machine `value` stays stable for filters; `label` uses desk-friendly wording in the UI. */
 export const globalStateOptions = [

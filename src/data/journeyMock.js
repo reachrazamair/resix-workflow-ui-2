@@ -32,6 +32,7 @@ export const TOKEN_LOAN = {
   upbDisplay: "$412k sleeve",
   ltvBand: "75–82%",
   walacorSeal: "Walacor Certified · sealed bundle hash 0x9f2c…a41",
+  mockTrustCertId: "WLC-TRUST-CERT-2026-1844-A41",
   hashedNotShown: ["Full SSN", "Full street address", "1003 PDF bytes", "Servicer borrower contact"],
   shownRetailSafe: ["State", "FICO band", "LTV band", "Note rate band", "Pool ID"],
 };

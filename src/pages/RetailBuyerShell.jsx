@@ -4,6 +4,8 @@ import { RETAIL_HIDDEN } from "../data/journeyMock";
 
 export default function RetailBuyerShell() {
   const [mode, setMode] = useState("retail");
+  const [showProof, setShowProof] = useState(false);
+
   return (
     <div className="page-content">
       <AppHeader
@@ -25,10 +27,23 @@ export default function RetailBuyerShell() {
             Institutional
           </button>
         </div>
+        <div className="panel proof-toggle-bar">
+          <label className="toggle-inline">
+            <input type="checkbox" checked={showProof} onChange={() => setShowProof((v) => !v)} />
+            <span>Show Walacor / trusted proof on this teaser (usually off for retail)</span>
+          </label>
+        </div>
         <div className={`panel retail-card ${mode === "retail" ? "retail-mode" : ""}`}>
           <h3>Pool teaser · Agency sleeve (demo)</h3>
-          <p>Target yield band: <strong>6.8–7.4%</strong> (illustrative)</p>
+          <p>
+            Target yield band: <strong>6.8–7.4%</strong> (illustrative)
+          </p>
           <p>Geography mix: CO / AZ / FL</p>
+          {showProof ? (
+            <p className="trust-cert-pill inline-proof">
+              Walacor proof stub · hash 0x9f2c…a41 · cert WLC-TRUST-CERT-2026-1844-A41
+            </p>
+          ) : null}
           {mode === "retail" ? (
             <>
               <h4>Not shown to retail</h4>
